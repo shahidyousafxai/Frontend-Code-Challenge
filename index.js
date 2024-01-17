@@ -1,3 +1,4 @@
+require('dotenv').config();
 var debug = require('debug')('frontend-code-challenge');
 var express = require('express');
 var path = require('path');
@@ -7,6 +8,7 @@ var bodyParser = require('body-parser');
 var logger = require('./lib/logger');
 
 var items = require('./routes/items');
+var login = require('./routes/login');
 
 var app = express();
 var log = logger(app);
@@ -16,7 +18,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'static')));
 
-app.use('/items', items);
+app.use('/item', items);
+app.use('/login', login);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -36,7 +39,7 @@ app.use(function(err, req, res, next) {
     });
 });
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3001);
 
 var server = app.listen(app.get('port'), function() {
     log.info('Express server listening on http://localhost:%d', server.address().port);
