@@ -1,12 +1,12 @@
 
-const baseURL = 'https://api.luxelocker.com';
+const baseURL = 'http://localhost:5000';
 
 const endPoints = {
  // Login
  login: `${baseURL}/login`,
 
  // Get Items
- fetchStatesCity: `${baseURL}/items/`,
+ getItems: `${baseURL}/items/`,
 };
 
-export { endPoints };
+export { endPoints, baseURL };

@@ -2,12 +2,21 @@ var express = require('express');
 const generateToken = require('../utils/generateToken');
 var router = express.Router();
 
-router.post('/', function (req, res, next) {
+router.post('/', (req, res, next) => {
 
+  // get username and password
  const { username, password } = req.body;
 
+ // generate token
  const token = generateToken(30);
- res.json({ success: true, message: 'Login successful', token });
+
+ // return response
+ res.json({ 
+  success: true, 
+  message: 'User Logged in successful', 
+  token,
+  username
+  });
 });
 
 module.exports = router;

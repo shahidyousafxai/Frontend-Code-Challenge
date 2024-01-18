@@ -1,22 +1,29 @@
+// Imports
 require('dotenv').config();
-var debug = require('debug')('frontend-code-challenge');
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var logger = require('./lib/logger');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const logger = require('./lib/logger');
+const cors = require('cors');
 
-var items = require('./routes/items');
-var login = require('./routes/login');
 
-var app = express();
-var log = logger(app);
+// Setup
+const app = express();
+const log = logger(app);
 
+
+// Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'static')));
+app.use(cors());
+
+
+// Routes
+const items = require('./routes/items');
+const login = require('./routes/login');
 
 app.use('/item', items);
 app.use('/login', login);
@@ -39,8 +46,9 @@ app.use(function(err, req, res, next) {
     });
 });
 
+// Set Port 
 app.set('port', process.env.PORT || 3001);
 
-var server = app.listen(app.get('port'), function() {
-    log.info('Express server listening on http://localhost:%d', server.address().port);
-});
+// Start Server
+const server = app.listen(app.get('port'), () => 
+console.log('Server listening on http://localhost:%d', server.address().port));

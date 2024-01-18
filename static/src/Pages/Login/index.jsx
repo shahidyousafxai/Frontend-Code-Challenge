@@ -2,20 +2,24 @@ import React, { useState } from 'react'
 import EyeIcon from '../../assets/icons/EyeIcon'
 import EyeCrossIcon from '../../assets/icons/EyeCrossIcon';
 import { useNavigate } from "react-router-dom";
+import { login } from '../../network/api';
 
 const Login = () => {
     const navigate = useNavigate();
     const [passwordVisibility, setPasswordVisibility] = useState(false);
-    
+
     const [form, setForm] = useState({
         username: "",
         password: "",
     });
 
     const handleLogin = async () => {
+        if (!form?.username || !form?.password) return;
         try {
-            // const token = localStorage.getItem(form?.username)
-            
+            const response = await login(form);
+            localStorage.setItem("token", response?.data?.token);
+            console.log(response)
+            navigate("/");
         } catch (err) {
             console.error('Login error', err);
         }
