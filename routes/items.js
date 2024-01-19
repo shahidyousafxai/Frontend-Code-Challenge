@@ -12,16 +12,6 @@ router.get('/', function(req, res) {
     res.json(_.toArray(items));
 });
 
-/* Create a new item */
-router.post('/', function(req, res) {
-    var item = req.body;
-    curId += 1;
-    item.id = curId;
-    items[item.id] = item;
-    log.info('Created item', item);
-    res.json(item);
-});
-
 /* Get a specific item by id */
 router.get('/:id', function(req, res, next) {
     var item = items[req.params.id];

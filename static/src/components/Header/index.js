@@ -2,7 +2,7 @@ import React from 'react'
 import Images from '../../assets'
 import { useNavigate } from 'react-router-dom';
 
-const Header = ({children}) => {
+const Header = ({ children }) => {
  const navigate = useNavigate();
  return (
   <>
@@ -13,13 +13,13 @@ const Header = ({children}) => {
        <div>
         <div className="flex h-16 items-center justify-between">
 
-         <div className="hidden lg:flex lg:flex-1 lg:items-center cursor-pointer"
-         onClick={() => navigate("/")}
+         <div className="flex lg:flex-1 lg:items-center cursor-pointer"
+          onClick={() => navigate("/")}
          >
           <img src={Images?.logo} alt='logo' className='h-8' />
          </div>
 
-         <div className="hidden h-full lg:flex">
+         <div className="h-full flex">
           <div className="flex h-full justify-center items-center space-x-8 text-black font-semibold">
            <span
             className='cursor-pointer hover:scale-110 hover:underline transition-all duration-300'
@@ -28,14 +28,14 @@ const Header = ({children}) => {
            <span className='cursor-pointer hover:scale-110 hover:underline transition-all duration-300'
             onClick={() => navigate("/checkout")}
            >Checkout</span>
-           <span className='cursor-pointer hover:scale-110 hover:underline transition-all duration-300'>Add Item</span>
           </div>
          </div>
 
          <div className="flex flex-1 items-center justify-end">
           <div className="flex items-center lg:ml-8">
            {/* Cart */}
-           <div className="ml-4 flow-root lg:ml-8">
+           <div className="ml-4 lg:ml-8 flex gap-10">
+
             <div className="group -m-2 flex items-center p-2 cursor-pointer relative">
              <span class="absolute top-0 left-6 flex h-2 w-2">
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>

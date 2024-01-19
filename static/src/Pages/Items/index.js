@@ -1,69 +1,64 @@
+import React, { useEffect, useState } from "react";
 import Header from "../../components/Header"
-
-const products = [
- {
-  id: 1,
-  name: 'Fusion',
-  price: '$49',
-  imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-05-related-product-01.jpg',
- },
- {
-  id: 2,
-  name: 'Fusion',
-  price: '$49',
-  imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-05-related-product-01.jpg',
- },
- {
-  id: 3,
-  name: 'Fusion',
-  price: '$49',
-  imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-05-related-product-01.jpg',
- },
- {
-  id: 4,
-  name: 'Fusion',
-  price: '$49',
-  imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-05-related-product-01.jpg',
- },
- {
-  id: 5,
-  name: 'Fusion',
-  price: '$49',
-  imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-05-related-product-01.jpg',
- },
-]
+import { addItem, getItems } from "../../network/api"
+import ProductCard from "../../components/ProductCard";
+import Button from "../../components/Button";
+import Modal from "../../components/Modal";
 
 export default function Items() {
+ const [items, setItems] = useState([]);
+ const [openModal, setOpenModal] = useState(false);
+ const getItemsListing = async () => {
+  try {
+   const response = await getItems();
+   setItems(response?.data);
+  } catch (error) {
+   console.log("Error", error);
+  }
+ }
+
+ useEffect(() => {
+  getItemsListing();
+ }, []);
+
+ const addProduct = async (product) => {
+  try {
+   const response = await addItem(product);
+   console.log(response?.data)
+  } catch (error) {
+   console.log("Error", error)
+  }
+ }
+
+ const itemsList = items?.map((product) => {
+  return (
+   <ProductCard product={product} />
+  )
+ })
+
  return (
   <Header>
-  <div className="bg-gray-100">
-   <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-    <div className="font-bold text-3xl capitalize">Trending products</div>
-    <div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
-     {products?.map((product) => (
-      <div key={product?.id} className="group relative border p-2 rounded-lg bg-gray-100 shadow-md">
-       <div className="aspect-w-4 aspect-h-3 overflow-hidden rounded-lg bg-gray-100">
-        <img src={product.imageSrc} alt="" className="object-cover object-center" />
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer flex items-end p-4 opacity-0 group-hover:opacity-100">
-         <div className="w-full rounded-md bg-gray-200 bg-opacity-75 py-2 px-4 text-center text-sm font-medium text-gray-900 backdrop-blur backdrop-filter whitespace-nowrap">
-          Checkout Product
-         </div>
-        </div>
-       </div>
-       <div className="mt-4 flex items-center justify-between space-x-8 text-base font-medium text-gray-900">
-        <h3>
-         <div>
-          <span aria-hidden="true" className="absolute inset-0" />
-          {product.name}
-         </div>
-        </h3>
-        <p>{product.price}</p>
-       </div>
-      </div>
-     ))}
+   <div className="bg-gray-100">
+    <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+     <div className="flex justify-between items-center">
+      <span className="font-bold text-3xl capitalize">Trending products</span>
+      <Button
+       label={"Add Item"}
+       onClick={() => setOpenModal(!openModal)}
+      />
+     </div>
+     <div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
+      {items ? (
+       React.Children.toArray(itemsList)
+      ) : null}
+     </div>
     </div>
    </div>
-  </div>
+   <Modal
+    open={openModal}
+    setOpen={setOpenModal}
+    addProduct={addProduct}
+   />
   </Header>
  )
 }

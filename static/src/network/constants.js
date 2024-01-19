@@ -2,11 +2,11 @@
 const baseURL = 'http://localhost:5000';
 
 const endPoints = {
- // Login
- login: `${baseURL}/login`,
-
  // Get Items
- getItems: `${baseURL}/items/`,
+ getItems: `${baseURL}/items`,
+
+ // Add Item
+ addItem: `${baseURL}/addItem/`,
 };
 
 export { endPoints, baseURL };

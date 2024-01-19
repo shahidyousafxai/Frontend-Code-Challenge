@@ -10,14 +10,14 @@ export default function Home() {
     <Header>
     <div className="bg-white">
       <div className="relative bg-gray-900">
-        <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden">
           <img
             src="https://tailwindui.com/img/ecommerce-images/home-page-01-hero-full-width.jpg"
             alt=""
             className="h-full w-full object-cover object-center"
           />
         </div>
-        <div aria-hidden="true" className="absolute inset-0 bg-gray-900 opacity-50" />
+        <div className="absolute inset-0 bg-gray-900 opacity-50" />
 
         <div className="relative mx-auto flex max-w-3xl flex-col items-center py-32 px-6 text-center sm:py-64 lg:px-0">
           <h1 className="text-4xl font-bold tracking-tight text-white lg:text-6xl">New arrivals are here</h1>
