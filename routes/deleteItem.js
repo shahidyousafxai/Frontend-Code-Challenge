@@ -15,6 +15,6 @@ router.delete('/:id', (req, res) => {
   const filteredProducts = newProductData?.filter((item) => item?.id !== id);
   const cartJsonData = JSON.stringify(filteredProducts, null, 2);
   fs.writeFileSync("products.json", cartJsonData);
-  res.json({ status: 200, success: true, message: 'Product Deleted successfully' });
+  res.status(200).json({ status: 200, success: true, message: 'Product Deleted successfully' });
 });
 module.exports = router;

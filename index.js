@@ -27,14 +27,14 @@ const addItem = require('./routes/addItem');
 const checkout = require('./routes/checkout');
 const getCheckoutItems = require('./routes/getCheckoutItems');
 const deleteItems = require('./routes/deleteItem');
-const deleteCheckoutItems = require('./routes/deleteCheckoutItems');
+const deleteCheckoutItem = require('./routes/deleteCheckoutItem');
 
 app.use('/items', items);
 app.use('/addItem', addItem);
 app.use('/checkout', checkout);
 app.use('/getCheckout', getCheckoutItems);
 app.use('/deleteItem', deleteItems);
-app.use('/deleteCheckoutItems', deleteCheckoutItems);
+app.use('/deleteCheckoutItem', deleteCheckoutItem);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

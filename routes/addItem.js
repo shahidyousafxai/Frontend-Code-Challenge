@@ -22,8 +22,8 @@ router.post('/', (req, res) => {
   const newData = req.body;
   const data = readDataFile();
   console.log(data)
-  data?.push({ id: data?.length + 1, ...newData });
+  data?.push({ ...newData, id: data?.length + 1 });
   writeDataFile(data);
-  res.json({ success: true, message: 'Data added successfully', newData });
+  res.status(200).json({ success: true, message: 'Data added successfully', newData });
 });
 module.exports = router;

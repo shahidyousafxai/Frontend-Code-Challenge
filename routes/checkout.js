@@ -24,6 +24,6 @@ router.post('/:id', (req, res) => {
   const cartJsonData = JSON.stringify(newCartData, null, 2);
   fs.writeFileSync("cart.json", cartJsonData);
 
-  res.json({ status: 200, success: true, message: 'Data added successfully', item });
+  res.status(200).json({ status: 200, success: true, message: 'Data added successfully', item });
 });
 module.exports = router;
