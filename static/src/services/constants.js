@@ -7,6 +7,12 @@ const endPoints = {
 
  // Add Item
  addItem: `${baseURL}/addItem/`,
+
+ // Checkout
+ checkout: `${baseURL}/checkout/`,
+
+  // Get Checkout
+  getCheckout: `${baseURL}/getCheckout`,
 };
 
 export { endPoints, baseURL };

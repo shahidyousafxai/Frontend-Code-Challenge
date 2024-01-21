@@ -1,11 +1,14 @@
 
-import React from 'react'
-import Images from '../../assets'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header';
 
 export default function Home() {
   const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   getCheckoutItems();
+  // }, [])
   return (
     <Header>
     <div className="bg-white">
@@ -27,6 +30,7 @@ export default function Home() {
           </p>
           <div
             className="mt-8 inline-block rounded-md border border-transparent bg-white py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100 cursor-pointer"
+            onClick={() => navigate('/items')}
           >
             Check Items
           </div>

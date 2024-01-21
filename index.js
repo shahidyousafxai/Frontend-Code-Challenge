@@ -24,9 +24,13 @@ app.use(cors());
 // Routes
 const items = require('./routes/items');
 const addItem = require('./routes/addItem');
+const checkout = require('./routes/checkout');
+const getCheckoutItems = require('./routes/getCheckoutItems');
 
 app.use('/items', items);
 app.use('/addItem', addItem);
+app.use('/checkout', checkout);
+app.use('/getCheckout', getCheckoutItems);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

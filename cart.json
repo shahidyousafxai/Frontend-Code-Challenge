@@ -1,0 +1,32 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "King Size Bed",
+      "price": "300",
+      "img": "bed",
+      "checkout": true
+    },
+    {
+      "id": 2,
+      "name": "Comfy Slippers",
+      "price": "15",
+      "img": "slippers",
+      "checkout": true
+    },
+    {
+      "id": 3,
+      "name": "CD Rack",
+      "price": "100",
+      "img": "rack",
+      "checkout": true
+    },
+    {
+      "id": 4,
+      "name": "Glasses",
+      "price": "3800",
+      "img": "glasses",
+      "checkout": true
+    }
+  ]
+}

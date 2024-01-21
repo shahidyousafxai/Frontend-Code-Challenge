@@ -5,6 +5,7 @@ const Images = {
     rack: require('./images/rack.jpg'),
     sticks: require('./images/sticks.jpg'),
     slippers: require('./images/slippers.jpg'),
+    bata: require('./images/bata.jpg'),
 };
 
 export default Images

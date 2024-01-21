@@ -1,27 +1,50 @@
 import React from 'react';
 import Images from '../../assets';
+import { checkoutItem } from '../../services/api';
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, getItemsListing }) => {
+
+  const checkoutProduct = async (id) => {
+    try {
+      const response = await checkoutItem(id);
+      console.log(response);
+      if (response?.status) {
+        getItemsListing();
+      }
+    } catch (error) {
+      console.log("Error", error);
+    }
+  }
   return (
     <div className="group relative border p-2 rounded-lg bg-gray-100 shadow-md">
       <div className="aspect-w-4 aspect-h-3 overflow-hidden rounded-lg bg-gray-100">
         <div className='w-full h-[250px]'>
-          <img src={Images[product?.img]} alt="" className="object-cover object-center" />
-        </div>
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer flex items-end p-4 opacity-0 group-hover:opacity-100">
-          <div className="w-full rounded-md cursor-pointer bg-gray-200 bg-opacity-75 py-2 px-4 text-center text-sm font-medium text-gray-900 backdrop-blur backdrop-filter whitespace-nowrap">
-            Checkout Product
-          </div>
+          <img src={Images[product?.img]} alt="" className="object-cover object-center w-full h-full" />
         </div>
       </div>
-      <div className="mt-4 flex items-center justify-between space-x-8 text-base font-medium text-gray-900">
-        <h3>
-          <div>
-            <span aria-hidden="true" className="absolute inset-0" />
+      <div className="mt-4 text-base font-medium text-gray-900">
+        <div className={`flex items-center ${product?.checkout ? "justify-end" : "justify-between"}`}>
+          {!product?.checkout ? (
+            <span className='cursor-pointer'
+              onClick={() => checkoutProduct(product?.id)}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+              </svg>
+            </span>
+          ) : null}
+          <span className='cursor-pointer'>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+            </svg>
+          </span>
+        </div>
+        <div className='flex justify-between items-center mt-2'>
+          <h3>
             {product?.name || "-"}
-          </div>
-        </h3>
-        <p>{product?.price || "-"}</p>
+          </h3>
+          <p>{product?.price || "-"}</p>
+        </div>
       </div>
     </div>
   )

@@ -2,6 +2,7 @@
 import Home from "../Pages/Home";
 import Items from "../Pages/Items";
 import Checkout from "../Pages/Checkout";
+import AddItems from "../Pages/AddItems";
 
 export const routes = [
     {
@@ -15,5 +16,9 @@ export const routes = [
     {
         path: "/checkout",
         element: <Checkout />,
+    },
+    {
+        path: "/add-items",
+        element: <AddItems />,
     },
 ];
