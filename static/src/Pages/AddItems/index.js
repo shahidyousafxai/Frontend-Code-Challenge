@@ -15,12 +15,40 @@ const AddItems = () => {
     img: "",
   })
 
+  const [error, setError] = useState({
+    name: "",
+    price: "",
+    img: "",
+  })
+
   const onChangeHandler = (e) => {
+    setError((prevError) => ({ ...prevError, [e.target.name]: "" }));
     setProduct((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
   // Add Product to Items Listing
   const addProduct = async (product) => {
+    setError({
+      name: "",
+      price: "",
+      img: "",
+    });
+
+    // Check for empty fields
+    if (!product.name) {
+      setError((prevError) => ({ ...prevError, name: "Name is required" }));
+    }
+    if (!product.price) {
+      setError((prevError) => ({ ...prevError, price: "Price is required" }));
+    }
+    if (!product.img) {
+      setError((prevError) => ({ ...prevError, img: "Image URL is required" }));
+    }
+
+    if(Object.values(product).some((val) => val === "")){
+      return;
+    }
+
     try {
       const response = await addItem(product);
       if(response?.status) {
@@ -55,18 +83,21 @@ const AddItems = () => {
               name="name"
               value={product?.name}
               onChange={(e) => onChangeHandler(e)}
+              error={error?.name}
             />
             < Input
               label="Price"
               name="price"
               value={product?.price}
               onChange={(e) => onChangeHandler(e)}
+              error={error?.price}
             />
             < Input
               label="Image Name"
               name="img"
               value={product?.img}
               onChange={(e) => onChangeHandler(e)}
+              error={error?.img}
             />
             <button
               className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"

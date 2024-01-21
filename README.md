@@ -22,7 +22,7 @@ To install package dependencies in React js, you have to navigate to "static" di
 
 Once the dependancies are installed, you can start the Node Js application server by running: `npm start` and React Js application server by running: `yarn start`
 
-The Node Js Server will be running on port `5000`. I f you want to change the port, please make sure you change it in react project as well in `static/src/services/constant.js`
+The Node Js Server will be running on port `5000`. If you want to change the port, please make sure you change it in react project as well in `static/src/services/constant.js`
 
 Once the server is running, you can access the start page by opening your browser to `http://localhost:3000`
 
