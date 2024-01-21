@@ -54,12 +54,5 @@
     "price": "350",
     "img": "cover",
     "checkout": false
-  },
-  {
-    "id": 12,
-    "name": "charge",
-    "price": 5000,
-    "img": "charger",
-    "checkout": false
   }
 ]
