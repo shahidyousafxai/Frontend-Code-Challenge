@@ -37,3 +37,10 @@ I have created 6 APIs for the following operations:
 - Add existing item to cart
 - Delete Item from Item Listing
 - Delete Item from checkout listing
+
+FRONTEND
+--------
+I have uses the following tech stack on the frontend side:
+- React Js JavaScript Framework
+- Tailwind CSS For styling
+- Axios for APIs integration
