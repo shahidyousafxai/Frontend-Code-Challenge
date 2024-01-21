@@ -18,9 +18,11 @@ Getting Started
 ---------------
 Install the package dependencies by running the following command: `npm install`
 You have to install package dependencies in both react js and node js.
-To install package dependencies in React js, you have to navigate to "static" directory.
+To install package dependencies in React js, you have to navigate to `static`` directory.
 
-Once the dependancies are installed, you can start the Node Js application server by running: `npm start` and React Js application server by running: `yarn start`
+Create .env file and then past `PORT=5000` into the .env file to declare port for Backend Server.
+
+Once the dependancies are installed and .env is created, you can start the Node Js application server by running: `npm start` and React Js application server by running: `yarn start`
 
 The Node Js Server will be running on port `5000`. If you want to change the port, please make sure you change it in react project as well in `static/src/services/constant.js`
 
