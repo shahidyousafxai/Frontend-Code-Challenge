@@ -1,8 +1,11 @@
-import { useState } from 'react'
-import Input from "../../components/Input"
-import { addItem } from '../../services/api'
-import Header from '../../components/Header'
-import { useNavigate } from 'react-router-dom'
+// Library Imports
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+// Local Imports
+import Input from "../../components/Input";
+import { addItem } from '../../services/api';
+import Header from '../../components/Header';
 
 const AddItems = () => {
   const navigate = useNavigate();
@@ -16,6 +19,7 @@ const AddItems = () => {
     setProduct((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
+  // Add Product to Items Listing
   const addProduct = async (product) => {
     try {
       const response = await addItem(product);

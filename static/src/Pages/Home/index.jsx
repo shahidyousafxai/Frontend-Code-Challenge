@@ -1,16 +1,16 @@
 
-import React, { useEffect } from 'react';
+// Library Imports
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
+
+// Local Imports
 import Header from '../../components/Header';
 
 export default function Home() {
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   getCheckoutItems();
-  // }, [])
   return (
-    <Header>
+    <Header cart={true}>
     <div className="bg-white">
       <div className="relative bg-gray-900">
         <div className="absolute inset-0 overflow-hidden">

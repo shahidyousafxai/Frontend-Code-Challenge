@@ -1,58 +1,30 @@
 [
   {
+    "id": 1,
+    "name": "King Size Bed",
+    "price": "300",
+    "img": "bed",
+    "checkout": false
+  },
+  {
+    "id": 2,
+    "name": "Comfy Slippers",
+    "price": "15",
+    "img": "slippers",
+    "checkout": false
+  },
+  {
+    "id": 3,
+    "name": "CD Rack",
+    "price": "100",
+    "img": "rack",
+    "checkout": false
+  },
+  {
     "id": 4,
     "name": "Glow Stick Bundle",
     "price": "10",
     "img": "sticks",
-    "checkout": false
-  },
-  {
-    "id": 5,
-    "name": "Cookie Jar",
-    "price": "25",
-    "img": "cookies",
-    "checkout": false
-  },
-  {
-    "id": 6,
-    "name": "Bata Shoes",
-    "price": "4000",
-    "img": "bata",
-    "checkout": false
-  },
-  {
-    "id": 7,
-    "name": "Shoe Shinner",
-    "price": "500",
-    "img": "shinner",
-    "checkout": false
-  },
-  {
-    "id": 8,
-    "name": "Thoot brush",
-    "price": "200",
-    "img": "brush",
-    "checkout": false
-  },
-  {
-    "id": 9,
-    "name": "Bag",
-    "price": "3500",
-    "img": "bag",
-    "checkout": false
-  },
-  {
-    "id": 10,
-    "name": "Cable",
-    "price": "250",
-    "img": "cable",
-    "checkout": false
-  },
-  {
-    "id": 11,
-    "name": "mobile case",
-    "price": "350",
-    "img": "cover",
     "checkout": false
   }
 ]

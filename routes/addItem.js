@@ -18,12 +18,13 @@ const writeDataFile = async (data) => {
   fs.writeFileSync("products.json", jsonData);
 }
 
+/* Add item to Items List. */
 router.post('/', (req, res) => {
-  const newData = req.body;
+  const { name, price, img } = req.body;
   const data = readDataFile();
+  data?.push({ id: data?.length + 1, name, price, img, checkout: false })
   console.log(data)
-  data?.push({ ...newData, id: data?.length + 1 });
   writeDataFile(data);
-  res.status(200).json({ success: true, message: 'Data added successfully', newData });
+  res.status(200).json({ success: true, message: 'Data added successfully' });
 });
 module.exports = router;

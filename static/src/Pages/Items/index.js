@@ -1,4 +1,7 @@
+// Library Imports
 import React, { useEffect, useState } from "react";
+
+// Local Imports
 import Header from "../../components/Header"
 import { getItems } from "../../services/api"
 import ProductCard from "../../components/ProductCard";
@@ -9,7 +12,7 @@ export default function Items() {
   const [totalCheckoutItems, setTotalCheckoutItems] = useState("");
   const [loading, setLoading] = useState(false);
 
-
+// Get Items Listing
   const getItemsListing = async () => {
     try {
       setLoading(true);
@@ -27,8 +30,8 @@ export default function Items() {
     getItemsListing();
   }, []);
 
+  // Mapping Items Card
   const itemsList = items?.map((product) => {
-    console.log(product)
     return (
       <ProductCard product={product} getItemsListing={getItemsListing}/>
     )

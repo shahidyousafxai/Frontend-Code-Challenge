@@ -1,4 +1,5 @@
-import React from 'react'
+// Library Imports
+import React from 'react';
 
 const Button = ({ label, onClick }) => {
  return (
